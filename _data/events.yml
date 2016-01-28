@@ -1,20 +1,58 @@
-- name: Elixir and Coffee
+- name: NYC Elixir Meetup
   type: future
-  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/226670406/
-  date_start: 2015-11-19
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/227739880/
+  date_start: 2016-01-28
+  location: New York, NY
+
+- name: ManhattanJS Meetup
+  type: future
+  url: http://manhattanjs.com/
+  date_start: 2016-02-10
+  location: New York, NY
+
+- name: Developer Week Hackathon
+  type: future
+  url: http://www.developerweek.com/hackathon/
+  date_start: 2016-02-13
+  date_end: 2016-02-14
+  location: San Francisco, CA
+
+- name: Developer Week Conference
+  type: future
+  url: http://www.developerweek.com/conference/
+  date_start: 2016-02-16
+  date_end: 2016-02-17
+  location: San Francisco, CA
+
+- name: BrookylnJS Meetup
+  type: past
+  url: http://brooklynjs.com/
+  date_start: 2016-01-21
+  location: Brooklyn, NY
+
+- name: ManhattanJS Meetup
+  type: past
+  url: http://manhattanjs.com/
+  date_start: 2016-01-13
   location: New York, NY
 
 - name: charmCityJS
-  type: future
+  type: past
   url: http://www.meetup.com/charmcityjs/events/222292084/
   date_start: 2015-12-02
   location: Baltimore, MD
 
 - name: Baltimore NodeSchool
-  type: future
+  type: past
   url: http://nodeschool.io/baltimore/
   date_start: 2015-12-05
   location: Baltimore, MD
+  
+- name: Elixir and Coffee
+  type: past
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/226670406/
+  date_start: 2015-11-19
+  location: New York, NY
 
 - name: Nodevember
   type: past

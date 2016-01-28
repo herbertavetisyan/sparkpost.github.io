@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.1
+install:
+- bundle install
+script: bundle exec rake site:deploy --quiet
+branches:
+  only:
+  - develop
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: TSWAXbRWSGOkb+aqJQKF2HKBWRTJwskz+dRxfMNCBHo8nnWMEsC3o5JU2Ypbi79GMvOaSku68xJbV0n2z8qqk+8OTKdl1ckCGMbpjlT/VX1fTl8s4R/TXDKgXdOXoJ4j7K6nYILqjDLnCNtpc9dAWnz/FVlCtTIJkx6t9ozkJPA6vF18kmzgBdHBDPuhvNVg8exDc25NkH9ClpPCCajWY6mhfGiry0/JsCpRFOBUByAmRs5gx++hSOZafLnMGOd1szBpJLBku9FO+ckJ5XFgmO8GA8lNDZ+UlD1WvC58ao+pjxnKWkTcIqPFinLz1HEMly5LS5/fSQoNvmLyka460IkODMDmqgfB6EtUuds/GG/bMO2fSrIh3JBqYwB+nV9bgWcAwSIwJGBfEI7EgGb34uit/alaYdEPZ11/se271PZYZfTXFuEYoUAjy6i+uY7THiWhxBgEvuVPWnOdD1NmWQelahWo0Al8cq1ofWzviQYF2/vZ+yJt3wLTjUNh59Q/Uiz6w/P3kB+0TKCOezXrDNhHAhOBseJ29IhsITCMagRGz+Foeg5rkwZj4Nu+rYYkE6Zg02gTyueS4ci0iVBNfXx7aPgwdUSAq0S0AjoKQOflO2BfkG/YYyf4C4EMGFpqIl6WifcgfbmVljFCl5Nb7e3lTxSdkvFR80iW7kpguj4=

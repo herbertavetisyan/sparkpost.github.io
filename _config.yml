@@ -1,5 +1,6 @@
 # Site settings
 environment: production
+destination: ./_site/
 title: SparkPost Developer Hub
 email: developers@sparkpost.com
 description: >
@@ -8,7 +9,7 @@ description: >
   with SparkPost. What will you build?
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://developers.sparkpost.com" # the base hostname & protocol for your site
-twitter_username: SparkPost
+twitter_username: SparkPostDev
 github_username:  SparkPost
 facebook_username: SparkPost
 facebook_app_id: 1078423545531734
@@ -37,3 +38,20 @@ defaults:
 
 # Build settings
 markdown: kramdown
+
+# Deploy settings
+username: sparkpost
+repo: sparkpost.github.io
+branch: develop
+
+exclude:
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - changelog.md
+  - "*.Rmd"
+  - vendor
+  - .travis.yml
+  - Guardfile
+  - bower.json
