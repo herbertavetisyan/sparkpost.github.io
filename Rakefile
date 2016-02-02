@@ -218,7 +218,8 @@ namespace :site do
     # Make sure destination folder exists as git repo
     check_destination
 
-    sh "git checkout #{SOURCE_BRANCH}"
+    # Why was this a thing?
+    # sh "git checkout #{SOURCE_BRANCH}"
     Dir.chdir(CONFIG["destination"]) { sh "git checkout #{DESTINATION_BRANCH}" }
 
     # Generate the site
@@ -236,6 +237,13 @@ namespace :site do
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
+      # Exits with 1 if there were differences and 0 means no differences.
+      ##sh "git diff --quiet" do |clean, res|
+      #  if clean
+      #    puts "Nothing to deploy."
+      #    exit
+      #  end
+      #end
       sh "git add --all ."
       sh "git commit -m 'Updating to #{USERNAME}/#{REPO}@#{sha}.'"
       sh "git push --quiet origin #{DESTINATION_BRANCH}"
