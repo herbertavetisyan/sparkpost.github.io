@@ -23,6 +23,73 @@
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
 
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script>
+      function initSearch() {
+        var client = algoliasearch('SFXAWCYDV8', '9ba87280f36f539fcc0a318c2d4fcfe6');
+        var index = client.initIndex('APIDocsDev');
+        autocomplete('#search', {hint: false}, [{
+          source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+          displayKey: function(suggestion) {
+            if (suggestion.actionName) {
+              if (suggestion.resGroupName !== suggestion.actionName) {
+                return suggestion.resGroupName + ' - ' + suggestion.actionName;
+              }
+              return suggestion.actionName;
+            } else if (suggestion.resName) {
+              if (suggestion.resGroupName !== suggestion.resName) {
+                return suggestion.resGroupName + ' - ' + suggestion.resName;
+              }
+              return suggestion.resName + ' endpoint';
+            } else if (suggestion.resGroupName) {
+              return suggestion.resGroupName;
+            }
+            return suggestion.sectionName;
+          },
+        }]).on('autocomplete:selected', function(event, suggestion, dataset) {
+          if (suggestion.element == 'resourceGroup') {
+            window.location.href = suggestion.objectID.split('#')[0];
+          } else {
+            window.location.href = suggestion.objectID;
+          }
+        });
+      }
+      window.onload = initSearch;
+    </script>
+    <style>
+      .algolia-autocomplete {
+        width: 100%;
+        color: black;
+        font-size: 10pt;
+      }
+      .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+        width: 100%;
+        min-height: 30px;
+        text-indent: 10px;
+      }
+      .algolia-autocomplete .aa-hint {
+        color: #999;
+      }
+      .algolia-autocomplete .aa-dropdown-menu {
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+        cursor: pointer;
+        padding: 5px 4px;
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+        background-color: #B2D7FF;
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+        font-weight: bold;
+        font-style: normal;
+      }
+    </style>
+
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
 mixpanel.init("{{ site.mixpanel_token }}");</script><!-- end Mixpanel -->
